@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import formfiller.EventSinks;
 import formfiller.EventSources;
+import formfiller.delivery.event.eventSink.EventSinkFactory;
 import formfiller.delivery.event.impl.EventHandler;
 import formfiller.delivery.router.Router;
 import formfiller.utilities.TestSetup;

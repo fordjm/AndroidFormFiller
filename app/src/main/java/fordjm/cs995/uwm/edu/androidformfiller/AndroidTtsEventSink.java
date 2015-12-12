@@ -2,7 +2,7 @@ package fordjm.cs995.uwm.edu.androidformfiller;
 
 import android.speech.tts.TextToSpeech;
 
-import formfiller.EventSink;
+import formfiller.delivery.event.eventSink.EventSink;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 
 public class AndroidTtsEventSink implements EventSink {

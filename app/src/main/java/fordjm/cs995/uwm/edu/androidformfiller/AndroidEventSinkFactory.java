@@ -1,6 +1,6 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
-import formfiller.EventSink;
+import formfiller.delivery.event.eventSink.*;
 
 public class AndroidEventSinkFactory implements EventSinkFactory {
     private MainActivity activity;

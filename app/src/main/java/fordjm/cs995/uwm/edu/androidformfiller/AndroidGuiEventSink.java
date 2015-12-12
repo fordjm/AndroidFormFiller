@@ -1,6 +1,6 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
-import formfiller.EventSink;
+import formfiller.delivery.event.eventSink.EventSink;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 
 public class AndroidGuiEventSink implements EventSink {

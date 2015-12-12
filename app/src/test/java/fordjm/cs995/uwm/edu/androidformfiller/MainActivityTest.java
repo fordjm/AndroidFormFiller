@@ -15,7 +15,7 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import formfiller.EventSink;
+import formfiller.delivery.event.eventSink.EventSink;
 import formfiller.EventSinks;
 import formfiller.utilities.TestSetup;
 
