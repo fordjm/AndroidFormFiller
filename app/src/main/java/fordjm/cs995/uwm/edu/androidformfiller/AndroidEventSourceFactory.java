@@ -1,11 +1,8 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
-import formfiller.delivery.event.EventSource;
+import formfiller.delivery.event.eventSource.*;
 
-/**
- * Created by Jason on 12/9/2015.
- */
-public class AndroidEventSourceFactory {
+public class AndroidEventSourceFactory implements EventSourceFactory {
     private MainActivity activity;
 
     public AndroidEventSourceFactory(MainActivity activity) {
@@ -13,7 +10,9 @@ public class AndroidEventSourceFactory {
     }
 
     public EventSource make(String component) {
-        if (component.equalsIgnoreCase("AndroidVoiceInvisible"))
+        if (component.equalsIgnoreCase("AndroidGui"))
+            return new AndroidGuiEventSource(activity);
+        else if (component.equalsIgnoreCase("AndroidVoiceInvisible"))
             return new AndroidAsrEventSource(activity);
         else
             return null;

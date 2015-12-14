@@ -11,13 +11,11 @@ import android.widget.Toast;
 import formfiller.EventSinks;
 import formfiller.EventSources;
 import formfiller.delivery.event.eventSink.EventSinkFactory;
-import formfiller.delivery.event.impl.EventHandler;
 import formfiller.delivery.router.Router;
 import formfiller.utilities.TestSetup;
 
 public class MainActivity extends AppCompatActivity {
     private AndroidEventHandler eventHandler;
-    public AndroidAsrEventSource eventSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +48,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupEventSources(String[] modalityComponents) {
-        //  TODO:   Dynamic setup according to modalityComponents array contents.
-        /*AndroidEventSourceFactory factory = new AndroidEventSourceFactory(this);
+        AndroidEventSourceFactory factory = new AndroidEventSourceFactory(this);
         for (String component : modalityComponents)
-            EventSources.add(factory.make(component));*/
-        eventSource = new AndroidAsrEventSource(this);
+            EventSources.add(factory.make(component));
     }
 
     private void setupEventSinks(String[] modalityComponents) {
@@ -116,11 +112,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void disableUi() {
-        eventSource.disable();  //  TODO:   Change to EventSources
+        EventSources.disable();
     }
 
     public void enableUi() {
-        eventSource.enable();  //  TODO:   Change to EventSources
+        EventSources.enable();
     }
 
     public void onReceivePushedEvent(String event) {

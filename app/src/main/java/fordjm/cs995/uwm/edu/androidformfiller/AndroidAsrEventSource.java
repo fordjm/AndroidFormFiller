@@ -7,7 +7,7 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.support.annotation.NonNull;
 
-import formfiller.delivery.event.EventSource;
+import formfiller.delivery.event.eventSource.EventSource;
 import root.gast.speech.RecognizerIntentFactory;
 
 public class AndroidAsrEventSource implements EventSource, RecognitionListener {
