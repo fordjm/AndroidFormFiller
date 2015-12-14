@@ -110,8 +110,6 @@ public class AndroidAsrEventSource implements EventSource, RecognitionListener {
     }
 
     public void onResults(final Bundle results) {
-        //  TODO:   Implement real functionality.
-        //          Speed problems appear to be internet-connection-related.
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {

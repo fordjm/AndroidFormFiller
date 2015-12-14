@@ -23,6 +23,7 @@ public class AndroidGuiAskQuestionView {
         formComponentView = getFormComponentView();
     }
 
+    //  TODO:   Use ViewUtilities class to fix duplication between views
     private View getFormComponentView() {
         return LayoutInflater.from(activity).inflate(R.layout.form_component_view, null);
     }
@@ -83,19 +84,18 @@ public class AndroidGuiAskQuestionView {
         result.setWidth(activity.getResources().getDisplayMetrics().widthPixels);
         result.setGravity(Gravity.CENTER);
         result.setImeOptions(EditorInfo.IME_ACTION_SEND);
-        String enteredText = result.getText().toString();
-        result.setOnEditorActionListener(makeOnEditorActionListener(enteredText));
+        result.setOnEditorActionListener(makeOnEditorActionListener(result));
         return result;
     }
 
     @NonNull
-    private TextView.OnEditorActionListener makeOnEditorActionListener(final String enteredText) {
+    private TextView.OnEditorActionListener makeOnEditorActionListener(final EditText editText) {
         return new TextView.OnEditorActionListener(){
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent event){
                 boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_SEND){
-                    String eventString = "add answer" + enteredText;
+                    String eventString = "add answer " + editText.getText().toString();
                     activity.onReceivePushedEvent(eventString);
                     handled = true;
                     closeKeyboard();

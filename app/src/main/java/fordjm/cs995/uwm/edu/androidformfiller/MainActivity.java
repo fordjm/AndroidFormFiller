@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent();
         //  TODO:   Can have at most one visible event source per screen (will need priority ordering)
         intent.putExtra("ModalityComponents", new String[]{"AndroidGui", "AndroidVoiceInvisible"});
+        //intent.putExtra("ModalityComponents", new String[]{"AndroidGui"});
         return intent;
     }
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleStartEvent() {
-        eventHandler.handleEvent("ask question next");
+        eventHandler.handleEvent("ask question current");
     }
 
     @Override
@@ -90,11 +91,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //  TODO:   Start add methods to new interface
+    //  TODO:   ForegroundView wrapper class?
     public void onReceiveGeneratedView(View view) { setContentView(view); }
 
     //  TODO:   BackgroundView?
-    //          Disable UI (But when to enable it again?)
     public void onReceiveGeneratedView(final AudioView view) {
         runOnUiThread(new Runnable() {
             public void run() {
@@ -115,9 +115,7 @@ public class MainActivity extends AppCompatActivity {
         EventSources.disable();
     }
 
-    public void enableUi() {
-        EventSources.enable();
-    }
+    public void enableUi() { EventSources.enable(); }
 
     public void onReceivePushedEvent(String event) {
         toastNotification("Received event: " + event);  //TODO: Remove

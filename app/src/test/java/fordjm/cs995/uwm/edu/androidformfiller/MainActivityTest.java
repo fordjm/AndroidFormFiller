@@ -52,4 +52,9 @@ public class MainActivityTest {
         return LayoutInflater.from(activity).inflate(R.layout.form_component_view, null);
     }
 
+    @Test
+    public void onReceivingPushedEvent_ViewComponentsAreEnabled() {
+
+    }
+
 }

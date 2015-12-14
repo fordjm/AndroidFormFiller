@@ -15,4 +15,6 @@ public class AndroidGuiEventSink implements EventSink {
         view.generateView(askQuestionViewModel);
     }
 
+    //public void receive(AddAnswerViewModel addAnswerViewModel) { }
+
 }
