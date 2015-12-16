@@ -2,5 +2,6 @@
     <string name="app_name">Android Form Filler</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="action_exit">Exit</string>
     <string name="action_settings">Settings</string>
 </resources>

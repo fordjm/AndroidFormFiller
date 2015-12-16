@@ -3,6 +3,7 @@ package fordjm.cs995.uwm.edu.androidformfiller;
 import android.speech.tts.TextToSpeech;
 
 import formfiller.delivery.event.eventSink.EventSink;
+import formfiller.usecases.addAnswer.AddAnswerViewModel;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 
 public class AndroidTtsEventSink implements EventSink {
@@ -16,5 +17,7 @@ public class AndroidTtsEventSink implements EventSink {
         AndroidTtsAskQuestionView view = new AndroidTtsAskQuestionView(activity);
         view.generateView(askQuestionViewModel);
     }
+
+    public void receive(AddAnswerViewModel addAnswerViewModel) { }
 
 }

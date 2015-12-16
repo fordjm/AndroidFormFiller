@@ -10,8 +10,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
-import java.util.ArrayList;
-
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 
 public class AndroidGuiAskQuestionView {
@@ -23,7 +21,7 @@ public class AndroidGuiAskQuestionView {
         formComponentView = getFormComponentView();
     }
 
-    //  TODO:   Use ViewUtilities class to fix duplication between views
+    //  TODO:   Use AndroidViewUtilities class to fix duplication between views
     private View getFormComponentView() {
         return LayoutInflater.from(activity).inflate(R.layout.form_component_view, null);
     }
@@ -35,7 +33,7 @@ public class AndroidGuiAskQuestionView {
 
     private View createViewFromViewModel(AskQuestionViewModel askQuestionViewModel) {
         addQuestionViewToFormComponentView(askQuestionViewModel.message);
-        addAnswerViewToFormComponentView(askQuestionViewModel);
+        addAnswerViewToFormComponentView(askQuestionViewModel.answerContent);
         return formComponentView;
     }
 
@@ -59,13 +57,13 @@ public class AndroidGuiAskQuestionView {
 
     //  TODO:  Make this method create proper fragments?
     //  TODO:  How to display the object as intended?
-    private void addAnswerViewToFormComponentView(AskQuestionViewModel askQuestionViewModel) {
+    private void addAnswerViewToFormComponentView(Object answerContent) {
         LinearLayout answerContainer = getFormComponentChildView("answerContainer");
         answerContainer.removeAllViews();
-        if (isAnswerContentEmpty(askQuestionViewModel.answerContent.toString()))
+        if (isAnswerContentEmpty(answerContent.toString()))
             answerContainer.addView(createEditText());
         else
-            answerContainer.addView((createTextView(askQuestionViewModel.answerContent.toString())));
+            answerContainer.addView((createTextView(answerContent.toString())));
     }
 
     private boolean isAnswerContentEmpty(String answerContent) {

@@ -88,6 +88,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_exit) {
+            finish();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
