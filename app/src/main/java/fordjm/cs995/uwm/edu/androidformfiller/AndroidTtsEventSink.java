@@ -18,6 +18,9 @@ public class AndroidTtsEventSink implements EventSink {
         view.generateView(askQuestionViewModel);
     }
 
-    public void receive(AddAnswerViewModel addAnswerViewModel) { }
+    public void receive(AddAnswerViewModel addAnswerViewModel) {
+        AndroidTtsAddAnswerView view = new AndroidTtsAddAnswerView(activity);
+        view.generateView(addAnswerViewModel);
+    }
 
 }

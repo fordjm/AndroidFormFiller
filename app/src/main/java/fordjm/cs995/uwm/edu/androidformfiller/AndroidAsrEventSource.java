@@ -7,10 +7,14 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.support.annotation.NonNull;
 
+import java.util.List;
+
 import formfiller.delivery.event.eventSource.EventSource;
+import formfiller.utilities.LingPipeTfIdfProximityCalculator;
 import root.gast.speech.RecognizerIntentFactory;
 
 public class AndroidAsrEventSource implements EventSource, RecognitionListener {
+    private final String commandWords = "add answer ask current next previous question";
     private MainActivity activity;
     private SpeechRecognizer recognizer;
 
@@ -114,10 +118,17 @@ public class AndroidAsrEventSource implements EventSource, RecognitionListener {
             @Override
             public void run() {
                 disable();
-                String topResult = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION).get(0);
+                List<String> strings = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                List<String> ordered = orderByTfIdfProximity(strings);
+                String topResult = ordered.get(0);
                 activity.onReceivePushedEvent(topResult);
             }
         });
+    }
+
+    private List<String> orderByTfIdfProximity(List<String> strings) {
+        LingPipeTfIdfProximityCalculator calculator = new LingPipeTfIdfProximityCalculator();
+        return calculator.rankByProximity(commandWords, strings);
     }
 
     public void onPartialResults(Bundle partialResults) {

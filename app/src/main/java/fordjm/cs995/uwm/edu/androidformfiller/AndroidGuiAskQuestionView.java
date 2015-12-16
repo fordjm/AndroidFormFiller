@@ -21,7 +21,6 @@ public class AndroidGuiAskQuestionView {
         formComponentView = getFormComponentView();
     }
 
-    //  TODO:   Use AndroidViewUtilities class to fix duplication between views
     private View getFormComponentView() {
         return LayoutInflater.from(activity).inflate(R.layout.form_component_view, null);
     }
@@ -63,7 +62,7 @@ public class AndroidGuiAskQuestionView {
         if (isAnswerContentEmpty(answerContent.toString()))
             answerContainer.addView(createEditText());
         else
-            answerContainer.addView((createTextView(answerContent.toString())));
+            answerContainer.addView((createEditText(answerContent.toString())));
     }
 
     private boolean isAnswerContentEmpty(String answerContent) {
@@ -83,6 +82,12 @@ public class AndroidGuiAskQuestionView {
         result.setGravity(Gravity.CENTER);
         result.setImeOptions(EditorInfo.IME_ACTION_SEND);
         result.setOnEditorActionListener(makeOnEditorActionListener(result));
+        return result;
+    }
+
+    private EditText createEditText(String message) {
+        EditText result = createEditText();
+        result.setText(message);
         return result;
     }
 
