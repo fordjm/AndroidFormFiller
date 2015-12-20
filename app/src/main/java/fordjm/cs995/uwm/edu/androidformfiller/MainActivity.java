@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleStartEvent() {
-        eventHandler.handleEvent("ask question current");
+        onReceivePushedEvent("ask question current");
     }
 
     @Override
@@ -98,7 +99,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //  TODO:   ForegroundView wrapper class?
-    public void onReceiveGeneratedView(View view) { setContentView(view); }
+    public void onReceiveGeneratedView(View view) {
+        //  TODO:   enableUi()?
+        setContentView(view);
+    }
 
     //  TODO:   BackgroundView?
     public void onReceiveGeneratedView(final AudioView view) {
@@ -124,9 +128,9 @@ public class MainActivity extends AppCompatActivity {
     public void enableUi() { EventSources.enable(); }
 
     public void onReceivePushedEvent(String event) {
+        //  TODO:   disableUi()?
         toastNotification("Received event: " + event);  //TODO: Remove
         eventHandler.handleEvent(event);
     }
-    //  TODO:   End add methods to new interface
 
 }

@@ -15,7 +15,7 @@ public class AndroidGuiAddAnswerView {
 
     public void generateView(AddAnswerViewModel addAnswerViewModel) {
         LinearLayout answerView = (LinearLayout) activity.findViewById(R.id.answer_container);
-        EditText editText = (EditText) answerView.getChildAt(0);
+        EditText editText = (EditText) answerView.getChildAt(0);    //  TODO:   Fix brittle code
         String content = removeQuotes(addAnswerViewModel.answerContent.toString());
         editText.setText(content);
         editText.invalidate();

@@ -2,10 +2,14 @@ package fordjm.cs995.uwm.edu.androidformfiller;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.view.GestureDetectorCompat;
+import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
@@ -22,7 +26,7 @@ public class AndroidGuiAskQuestionView {
     }
 
     private View getFormComponentView() {
-        return LayoutInflater.from(activity).inflate(R.layout.form_component_view, null);
+        return new FormComponentLayout(activity);
     }
 
     public void generateView(AskQuestionViewModel askQuestionViewModel) {
@@ -51,10 +55,13 @@ public class AndroidGuiAskQuestionView {
     private TextView createTextView(String message) {
         TextView result = new TextView(activity);
         result.setText(message);
+        result.setBackgroundColor(0);
+        result.setTextSize(GuiUtilities.getFontSize(activity, 16.0f));
+        //result.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        result.setGravity(Gravity.CENTER);
         return result;
     }
 
-    //  TODO:  Make this method create proper fragments?
     //  TODO:  How to display the object as intended?
     private void addAnswerViewToFormComponentView(Object answerContent) {
         LinearLayout answerContainer = getFormComponentChildView("answerContainer");
@@ -73,16 +80,24 @@ public class AndroidGuiAskQuestionView {
     private EditText createEditText(){
         // FILL_PARENT, WRAP_PARENT, (imeOptions=) actionSend
         final EditText result = new EditText(activity);
-        //result.setBackgroundColor(Util.getButtonColors()[0]);
-        result.setHint("tap here");
-        //result.setTextSize(Util.getFontSize(activity, 22.0f));
+        result.setHint("Tap Here");
+        result.setTextSize(GuiUtilities.getFontSize(activity, 22.0f));
         result.setHeight(new Double(
                 activity.getResources().getDisplayMetrics().heightPixels * 0.375).intValue());
         result.setWidth(activity.getResources().getDisplayMetrics().widthPixels);
         result.setGravity(Gravity.CENTER);
         result.setImeOptions(EditorInfo.IME_ACTION_SEND);
+        //result.setOnFocusChangeListener(makeOnFocusListener(result));
         result.setOnEditorActionListener(makeOnEditorActionListener(result));
         return result;
+    }
+
+    private View.OnFocusChangeListener makeOnFocusListener(final EditText result) {
+        return new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                result.setHint("");
+            }
+        };
     }
 
     private EditText createEditText(String message) {

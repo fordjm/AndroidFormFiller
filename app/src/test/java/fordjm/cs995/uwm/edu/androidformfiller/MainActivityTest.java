@@ -40,19 +40,6 @@ public class MainActivityTest {
     }
 
     @Test
-    public void canAccessViewComponents() {
-        View formComponentView = getFormComponentView();
-
-        assertNotNull(formComponentView);
-        assertNotNull(formComponentView.findViewWithTag("questionContainer"));
-        assertNotNull(formComponentView.findViewWithTag("answerContainer"));
-    }
-
-    private View getFormComponentView() {
-        return LayoutInflater.from(activity).inflate(R.layout.form_component_view, null);
-    }
-
-    @Test
     public void onReceivingPushedEvent_ViewComponentsAreEnabled() {
 
     }

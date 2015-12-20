@@ -1,14 +1,12 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import fordjm.cs995.uwm.edu.androidformfiller.utilities.ViewAccessor;
 import formfiller.delivery.event.eventSource.EventSource;
 
-import static fordjm.cs995.uwm.edu.androidformfiller.R.layout.form_component_view;
+//import static fordjm.cs995.uwm.edu.androidformfiller.R.layout.form_component_view;
 
 public class AndroidGuiEventSource implements EventSource {
     private MainActivity activity;
@@ -16,19 +14,17 @@ public class AndroidGuiEventSource implements EventSource {
         this.activity = activity;
     }
 
-    //  TODO:   Make this work with whole form_component_view layout.
+    //  TODO:   Exempt question_container from disabling (subclass TextView?)
     public void disable() {
-        LinearLayout answerContainer = getAnswerContainer();
-        recursivelyDisable(answerContainer);
+        recursivelyDisable(getFormComponentContainer());
     }
 
-    private LinearLayout getAnswerContainer() {
-        return (LinearLayout) activity.findViewById(R.id.answer_container);
+    private LinearLayout getFormComponentContainer() {
+        return (LinearLayout) activity.findViewById(R.id.form_component_container);
     }
 
     public void enable() {
-        LinearLayout answerContainer = getAnswerContainer();
-        recursivelyEnable(answerContainer);
+        recursivelyEnable(getFormComponentContainer());
     }
 
     //  From:       http://stackoverflow.com/questions/19800422/disabling-all-child-views-inside-the-layout
