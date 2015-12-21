@@ -12,10 +12,12 @@ import android.widget.Toast;
 public class FormComponentLayout extends LinearLayout {
     private MainActivity activity;
     private SwipeGestureListener gestureListener;
+    private boolean enabled;
 
     public FormComponentLayout(MainActivity activity) {
         super(activity);
         this.activity = activity;
+        this.enabled = true;
         gestureListener = new SwipeGestureListener(activity);
         setUpLayout(activity);
     }
@@ -86,6 +88,8 @@ public class FormComponentLayout extends LinearLayout {
 
         @Override
         public boolean onDown(MotionEvent event) {
+            if (!enabled) return false;
+
             return true;
         }
 
@@ -93,6 +97,8 @@ public class FormComponentLayout extends LinearLayout {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
+
+            if (!enabled) return false;
 
             /*final int position = lvCountry.pointToPosition(
                     Math.round(e1.getX()), Math.round(e1.getY()));*/
@@ -123,11 +129,11 @@ public class FormComponentLayout extends LinearLayout {
                 }
             }
             return true;
-
         }
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
+            if (!enabled) return false;
             //activity.toastNotification("onTouch");
             gDetector.onTouchEvent(event);
             return true;
@@ -137,5 +143,11 @@ public class FormComponentLayout extends LinearLayout {
             return gDetector;
         }
 
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        this.enabled = enabled;
     }
 }

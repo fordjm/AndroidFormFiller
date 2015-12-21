@@ -53,7 +53,7 @@ public class AndroidGuiAskQuestionView {
 
     @NonNull
     private TextView createTextView(String message) {
-        TextView result = new TextView(activity);
+        TextView result = new AlwaysEnabledTextView(activity);
         result.setText(message);
         result.setBackgroundColor(0);
         result.setTextSize(GuiUtilities.getFontSize(activity, 16.0f));

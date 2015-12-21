@@ -17,12 +17,14 @@ import formfiller.utilities.TestSetup;
 
 public class MainActivity extends AppCompatActivity {
     private AndroidEventHandler eventHandler;
+    private UiDisableCallTracker uiDisableCallTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO:    What to store in savedInstanceState?
         if (savedInstanceState == null) setUp();
+        uiDisableCallTracker = new UiDisableCallTracker();
         handleStartEvent();
         //  TODO:   Enable both push and pull event sources?  Let callbacks enable?
     }
@@ -100,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
     //  TODO:   ForegroundView wrapper class?
     public void onReceiveGeneratedView(View view) {
-        //  TODO:   enableUi()?
         setContentView(view);
     }
 
@@ -122,13 +123,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void disableUi() {
+        uiDisableCallTracker.addDisable();
         EventSources.disable();
     }
 
-    public void enableUi() { EventSources.enable(); }
+    public void enableUi() {
+        uiDisableCallTracker.addEnable();
+
+        if (uiDisableCallTracker.shouldEnable())
+            EventSources.enable();
+    }
 
     public void onReceivePushedEvent(String event) {
-        //  TODO:   disableUi()?
         toastNotification("Received event: " + event);  //TODO: Remove
         eventHandler.handleEvent(event);
     }
