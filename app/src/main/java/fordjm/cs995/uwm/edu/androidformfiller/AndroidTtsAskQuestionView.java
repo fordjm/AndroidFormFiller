@@ -7,12 +7,12 @@ import formfiller.utilities.StringUtilities;
 import root.gast.speech.tts.TextToSpeechInitializer;
 
 public class AndroidTtsAskQuestionView {
-    private final MainActivity activity;
+    protected final FormFillerActivity activity;
     private TextToSpeech textToSpeech;
     private TextToSpeechStartupListenerImpl ttsStartupListener;
     private TextToSpeechInitializer initializer;
 
-    public AndroidTtsAskQuestionView(MainActivity activity) {
+    public AndroidTtsAskQuestionView(FormFillerActivity activity) {
         this.activity = activity;
     }
 

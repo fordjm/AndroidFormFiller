@@ -11,11 +11,11 @@ import static org.easymock.EasyMock.createMock;
 
 public class AndroidTtsAskQuestionViewTest {
     @Mock
-    MainActivity activity;
+    FormFillerActivity activity;
 
     @Test
     public void nothing() {
-        activity = createMock(MainActivity.class);
+        activity = createMock(FormFillerActivity.class);
         AndroidTtsAskQuestionView view = new AndroidTtsAskQuestionView(activity);
         AskQuestionViewModel viewModel = makeAskQuestionViewModel();
 

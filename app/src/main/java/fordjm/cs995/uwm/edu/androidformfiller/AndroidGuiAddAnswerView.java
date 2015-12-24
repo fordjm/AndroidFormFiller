@@ -1,15 +1,14 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
-import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import formfiller.usecases.addAnswer.AddAnswerViewModel;
 
 public class AndroidGuiAddAnswerView {
-    private MainActivity activity;
+    private FormFillerActivity activity;
 
-    public AndroidGuiAddAnswerView(MainActivity activity) {
+    public AndroidGuiAddAnswerView(FormFillerActivity activity) {
         this.activity = activity;
     }
 

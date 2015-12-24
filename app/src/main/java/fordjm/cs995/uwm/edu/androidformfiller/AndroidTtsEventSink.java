@@ -1,15 +1,14 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
-import android.speech.tts.TextToSpeech;
-
 import formfiller.delivery.event.eventSink.EventSink;
+import formfiller.delivery.viewModel.NotificationViewModel;
 import formfiller.usecases.addAnswer.AddAnswerViewModel;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 
 public class AndroidTtsEventSink implements EventSink {
-    private MainActivity activity;
+    protected FormFillerActivity activity;
 
-    public AndroidTtsEventSink(MainActivity activity) {
+    public AndroidTtsEventSink(FormFillerActivity activity) {
         this.activity = activity;
     }
 
@@ -21,6 +20,11 @@ public class AndroidTtsEventSink implements EventSink {
     public void receive(AddAnswerViewModel addAnswerViewModel) {
         AndroidTtsAddAnswerView view = new AndroidTtsAddAnswerView(activity);
         view.generateView(addAnswerViewModel);
+    }
+
+    public void receive(NotificationViewModel notificationViewModel) {
+        AndroidTtsNotificationView view = new AndroidTtsNotificationView(activity);
+        view.generateView(notificationViewModel);
     }
 
 }

@@ -22,11 +22,11 @@ public class TextToSpeechStartupListenerImplTest {
     private TextToSpeech mockTextToSpeech;
 
     @Mock
-    private MainActivity mockActivity;
+    private FormFillerActivity mockActivity;
 
     @Before
     public void setUp() {
-        mockActivity = EasyMock.createMock(MainActivity.class);
+        mockActivity = EasyMock.createMock(FormFillerActivity.class);
         listener = new TextToSpeechStartupListenerImpl(mockActivity, "What is your name?");
     }
 

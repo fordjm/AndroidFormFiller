@@ -6,11 +6,9 @@ import android.widget.LinearLayout;
 
 import formfiller.delivery.event.eventSource.EventSource;
 
-//import static fordjm.cs995.uwm.edu.androidformfiller.R.layout.form_component_view;
-
 public class AndroidGuiEventSource implements EventSource {
-    private MainActivity activity;
-    public AndroidGuiEventSource(MainActivity activity) {
+    private FormFillerActivity activity;
+    public AndroidGuiEventSource(FormFillerActivity activity) {
         this.activity = activity;
     }
 

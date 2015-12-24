@@ -1,13 +1,14 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
 import formfiller.delivery.event.eventSink.EventSink;
+import formfiller.delivery.viewModel.NotificationViewModel;
 import formfiller.usecases.addAnswer.AddAnswerViewModel;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 
 public class AndroidGuiEventSink implements EventSink {
-    private MainActivity activity;
+    private FormFillerActivity activity;
 
-    public AndroidGuiEventSink(MainActivity activity) {
+    public AndroidGuiEventSink(FormFillerActivity activity) {
         this.activity = activity;
     }
 
@@ -19,6 +20,12 @@ public class AndroidGuiEventSink implements EventSink {
     public void receive(AddAnswerViewModel addAnswerViewModel) {
         AndroidGuiAddAnswerView view = new AndroidGuiAddAnswerView(activity);
         view.generateView(addAnswerViewModel);
+    }
+
+    @Override
+    public void receive(NotificationViewModel notificationViewModel) {
+        AndroidGuiNotificationView view = new AndroidGuiNotificationView(activity);
+        view.generateView(notificationViewModel);
     }
 
 }

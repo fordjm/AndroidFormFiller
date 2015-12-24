@@ -9,4 +9,7 @@
     <item
         type="id"
         name="question_container" />
+    <item
+        type="id"
+        name="tts_visible_view" />
 </resources>

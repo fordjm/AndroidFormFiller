@@ -41,15 +41,16 @@ android.packagingOptions {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':libs:gastLibrary')
-    compile 'com.android.support:appcompat-v7:22.2.0'
     compile('org.easymock:easymock:3.4') {
         exclude group: 'org.objenesis', module: 'objenesis'
     }
-    compile 'com.android.support:multidex:1.0.1'
     testCompile('org.robolectric:robolectric:3.0') {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:design:22.2.1'
 }
 configurations {
     all*.exclude group: 'commons-codec', module: 'commons-codec'

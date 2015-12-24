@@ -3,9 +3,9 @@ package fordjm.cs995.uwm.edu.androidformfiller;
 import formfiller.usecases.addAnswer.AddAnswerViewModel;
 
 public class AndroidTtsAddAnswerView {
-    private MainActivity activity;
+    private FormFillerActivity activity;
 
-    public AndroidTtsAddAnswerView(MainActivity activity) {
+    public AndroidTtsAddAnswerView(FormFillerActivity activity) {
         this.activity = activity;
     }
 

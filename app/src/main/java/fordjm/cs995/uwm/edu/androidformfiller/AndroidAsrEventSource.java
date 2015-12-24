@@ -15,10 +15,10 @@ import root.gast.speech.RecognizerIntentFactory;
 
 public class AndroidAsrEventSource implements EventSource, RecognitionListener {
     private final String commandWords = "add answer ask current next previous question";
-    private MainActivity activity;
     private SpeechRecognizer recognizer;
+    protected FormFillerActivity activity;
 
-    public AndroidAsrEventSource(MainActivity activity) {
+    public AndroidAsrEventSource(FormFillerActivity activity) {
         this.activity = activity;
     }
 
@@ -94,7 +94,7 @@ public class AndroidAsrEventSource implements EventSource, RecognitionListener {
     }
 
     public void onError(int error) {
-        //activity.toastNotification(getErrorMessage(error));
+        //  TODO:   Handle
     }
 
     @NonNull
@@ -117,7 +117,6 @@ public class AndroidAsrEventSource implements EventSource, RecognitionListener {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                disable();
                 List<String> strings = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 List<String> ordered = orderByTfIdfProximity(strings);
                 String topResult = ordered.get(0);

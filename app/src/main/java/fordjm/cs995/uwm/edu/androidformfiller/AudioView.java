@@ -7,12 +7,12 @@ import java.util.Locale;
 import root.gast.speech.tts.TextToSpeechInitializer;
 
 public class AudioView {
-    private MainActivity activity;
+    private FormFillerActivity activity;
     private String message;
     private TextToSpeechStartupListenerImpl ttsStartupListener;
     private TextToSpeechInitializer initializer;
 
-    public AudioView(MainActivity activity, String message) {
+    public AudioView(FormFillerActivity activity, String message) {
         this.activity = activity;
         this.message = message;
     }

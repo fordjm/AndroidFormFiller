@@ -3,9 +3,9 @@ package fordjm.cs995.uwm.edu.androidformfiller;
 import formfiller.delivery.event.eventSource.*;
 
 public class AndroidEventSourceFactory implements EventSourceFactory {
-    private MainActivity activity;
+    private FormFillerActivity activity;
 
-    public AndroidEventSourceFactory(MainActivity activity) {
+    public AndroidEventSourceFactory(FormFillerActivity activity) {
         this.activity = activity;
     }
 
@@ -14,7 +14,10 @@ public class AndroidEventSourceFactory implements EventSourceFactory {
             return new AndroidGuiEventSource(activity);
         else if (component.equalsIgnoreCase("AndroidVoiceInvisible"))
             return new AndroidAsrEventSource(activity);
+        else if (component.equalsIgnoreCase("AndroidVoiceVisible"))
+            return new AndroidAsrVisibleEventSource(activity);
         else
             return null;
     }
+
 }

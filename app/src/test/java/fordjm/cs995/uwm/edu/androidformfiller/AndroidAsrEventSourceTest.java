@@ -21,7 +21,7 @@ public class AndroidAsrEventSourceTest extends EasyMockSupport {
     private AndroidAsrEventSource eventSource;
 
     @Mock
-    private MainActivity mockActivity;
+    private FormFillerActivity mockActivity;
 
     @Before
     public void setUp() {
@@ -29,8 +29,8 @@ public class AndroidAsrEventSourceTest extends EasyMockSupport {
         eventSource = new AndroidAsrEventSource(mockActivity);
     }
 
-    private MainActivity makeMockActivity() {
-        MainActivity result = mock(MainActivity.class);
+    private FormFillerActivity makeMockActivity() {
+        FormFillerActivity result = mock(FormFillerActivity.class);
         expect(result.getPackageName()).andReturn("PackageName");
         expect(result.getPackageName()).andReturn("PackageName");
         replay(result);

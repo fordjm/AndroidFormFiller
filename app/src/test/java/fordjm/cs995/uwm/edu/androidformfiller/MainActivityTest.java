@@ -1,11 +1,8 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
 import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import static junit.framework.Assert.assertNotNull;
-import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Before;
@@ -15,21 +12,19 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import formfiller.delivery.event.eventSink.EventSink;
-import formfiller.EventSinks;
 import formfiller.utilities.TestSetup;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class)
 public class MainActivityTest {
-    private MainActivity activity;
+    private FormFillerActivity activity;
 
     @Before
     public void setUp() {
         TestSetup.setupSampleFormComponents();
         Intent intent = new Intent();
         intent.putExtra("ModalityComponents", new String[]{"AndroidGui", "AndroidTtsInvisible"});
-        activity = Robolectric.buildActivity(MainActivity.class).withIntent(intent).create().get();
+        activity = Robolectric.buildActivity(FormFillerActivity.class).withIntent(intent).create().get();
     }
 
     @Test

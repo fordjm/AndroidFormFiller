@@ -12,12 +12,12 @@ import root.gast.speech.tts.TextToSpeechUtils;
 
 public class TextToSpeechStartupListenerImpl implements TextToSpeechStartupListener {
     private static final String TAG = "TTSStartupListenerImpl";
-    private MainActivity activity;
+    private FormFillerActivity activity;
     private String speech;
     private TextToSpeech tts;
     private boolean isDone;
 
-    public TextToSpeechStartupListenerImpl(MainActivity activity, String speech) {
+    public TextToSpeechStartupListenerImpl(FormFillerActivity activity, String speech) {
         this.activity = activity;
         this.speech = speech;
     }

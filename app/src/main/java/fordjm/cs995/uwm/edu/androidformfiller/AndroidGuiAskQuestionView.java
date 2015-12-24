@@ -2,14 +2,9 @@ package fordjm.cs995.uwm.edu.androidformfiller;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.view.GestureDetectorCompat;
-import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
@@ -17,10 +12,10 @@ import android.widget.*;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 
 public class AndroidGuiAskQuestionView {
-    private MainActivity activity;
+    private FormFillerActivity activity;
     private View formComponentView;
 
-    public AndroidGuiAskQuestionView(MainActivity activity) {
+    public AndroidGuiAskQuestionView(FormFillerActivity activity) {
         this.activity = activity;
         formComponentView = getFormComponentView();
     }
@@ -56,7 +51,7 @@ public class AndroidGuiAskQuestionView {
         TextView result = new AlwaysEnabledTextView(activity);
         result.setText(message);
         result.setBackgroundColor(0);
-        result.setTextSize(GuiUtilities.getFontSize(activity, 16.0f));
+        result.setTextSize(GuiUtilities.getScaledFontSize(activity, 16.0f));
         //result.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         result.setGravity(Gravity.CENTER);
         return result;
@@ -81,7 +76,7 @@ public class AndroidGuiAskQuestionView {
         // FILL_PARENT, WRAP_PARENT, (imeOptions=) actionSend
         final EditText result = new EditText(activity);
         result.setHint("Tap Here");
-        result.setTextSize(GuiUtilities.getFontSize(activity, 22.0f));
+        result.setTextSize(GuiUtilities.getScaledFontSize(activity, 22.0f));
         result.setHeight(new Double(
                 activity.getResources().getDisplayMetrics().heightPixels * 0.375).intValue());
         result.setWidth(activity.getResources().getDisplayMetrics().widthPixels);

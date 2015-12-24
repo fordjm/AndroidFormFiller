@@ -3,9 +3,9 @@ package fordjm.cs995.uwm.edu.androidformfiller;
 import formfiller.delivery.event.eventSink.*;
 
 public class AndroidEventSinkFactory implements EventSinkFactory {
-    private MainActivity activity;
+    private FormFillerActivity activity;
 
-    public AndroidEventSinkFactory(MainActivity mainActivity) {
+    public AndroidEventSinkFactory(FormFillerActivity mainActivity) {
         activity = mainActivity;
     }
 
@@ -14,6 +14,8 @@ public class AndroidEventSinkFactory implements EventSinkFactory {
             return new AndroidGuiEventSink(activity);
         else if (name.equalsIgnoreCase("AndroidVoiceInvisible"))
             return new AndroidTtsEventSink(activity);
+        else if (name.equalsIgnoreCase("AndroidVoiceVisible"))
+            return new AndroidTtsVisibleEventSink(activity);
         else
             return null;
     }

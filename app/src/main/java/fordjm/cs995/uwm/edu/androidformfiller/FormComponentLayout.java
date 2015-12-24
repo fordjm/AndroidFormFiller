@@ -6,15 +6,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-//  TODO:   Make child views visible
 public class FormComponentLayout extends LinearLayout {
-    private MainActivity activity;
+    private FormFillerActivity activity;
     private SwipeGestureListener gestureListener;
     private boolean enabled;
 
-    public FormComponentLayout(MainActivity activity) {
+    public FormComponentLayout(FormFillerActivity activity) {
         super(activity);
         this.activity = activity;
         this.enabled = true;
@@ -22,7 +20,7 @@ public class FormComponentLayout extends LinearLayout {
         setUpLayout(activity);
     }
 
-    private void setUpLayout(MainActivity activity) {
+    private void setUpLayout(FormFillerActivity activity) {
         setId(R.id.form_component_container);
         setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         setOrientation(VERTICAL);
@@ -93,38 +91,29 @@ public class FormComponentLayout extends LinearLayout {
             return true;
         }
 
-        //  TODO:   Clean up
+        //  TODO:   Clean up, extract methods for conditions
         @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+        public boolean onFling(MotionEvent touchDown, MotionEvent touchUp, float velocityX,
                                float velocityY) {
-
             if (!enabled) return false;
 
-            /*final int position = lvCountry.pointToPosition(
-                    Math.round(e1.getX()), Math.round(e1.getY()));*/
-
-            String countryName = "";
-
-            if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH) {
-                if (Math.abs(e1.getX() - e2.getX()) > SWIPE_MAX_OFF_PATH
+            if (Math.abs(touchDown.getY() - touchUp.getY()) > SWIPE_MAX_OFF_PATH) {
+                if (Math.abs(touchDown.getX() - touchUp.getX()) > SWIPE_MAX_OFF_PATH
                         || Math.abs(velocityY) < SWIPE_THRESHOLD_VELOCITY) {
                     return false;
                 }
-                if (e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE) {
-                    Toast.makeText(context, "bottomToTop" + countryName,
-                            Toast.LENGTH_SHORT).show();
-                } else if (e2.getY() - e1.getY() > SWIPE_MIN_DISTANCE) {
-                    Toast.makeText(context,
-                            "topToBottom  " + countryName, Toast.LENGTH_SHORT)
-                            .show();
+                if (touchDown.getY() - touchUp.getY() > SWIPE_MIN_DISTANCE) {
+                    return false;
+                } else if (touchUp.getY() - touchDown.getY() > SWIPE_MIN_DISTANCE) {
+                    activity.onReceivePushedEvent("ask question current");
                 }
             } else {
                 if (Math.abs(velocityX) < SWIPE_THRESHOLD_VELOCITY) {
                     return false;
                 }
-                if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE) {
+                if (touchDown.getX() - touchUp.getX() > SWIPE_MIN_DISTANCE) {
                     activity.onReceivePushedEvent("ask question next");
-                } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE) {
+                } else if (touchUp.getX() - touchDown.getX() > SWIPE_MIN_DISTANCE) {
                     activity.onReceivePushedEvent("ask question previous");
                 }
             }
@@ -134,7 +123,7 @@ public class FormComponentLayout extends LinearLayout {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             if (!enabled) return false;
-            //activity.toastNotification("onTouch");
+
             gDetector.onTouchEvent(event);
             return true;
         }
@@ -150,4 +139,5 @@ public class FormComponentLayout extends LinearLayout {
         super.setEnabled(enabled);
         this.enabled = enabled;
     }
+    
 }
