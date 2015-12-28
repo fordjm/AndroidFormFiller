@@ -83,6 +83,7 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="lucene-snowball-3.0.3" level="project" />
+    <orderEntry type="library" exported="" name="lucene-core-3.0.3" level="project" />
     <orderEntry type="library" exported="" name="commons-codec-1.5" level="project" />
     <orderEntry type="library" exported="" name="effects-android-19" level="project" />
     <orderEntry type="library" exported="" name="usb-android-19" level="project" />

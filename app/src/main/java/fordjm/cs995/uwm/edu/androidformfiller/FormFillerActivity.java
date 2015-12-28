@@ -124,8 +124,12 @@ public class FormFillerActivity extends AppCompatActivity {
             EventSources.enable();
     }
 
-    public void onReceivePushedEvent(String event) {
-        eventHandler.handleEvent(event);
+    public void onReceivePushedEvent(final String event) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                eventHandler.handleEvent(event);
+            }
+        });
     }
 
 }

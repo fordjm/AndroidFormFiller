@@ -53,5 +53,6 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
 }
 configurations {
+    all*.exclude group: 'org.apache.lucene'
     all*.exclude group: 'commons-codec', module: 'commons-codec'
 }

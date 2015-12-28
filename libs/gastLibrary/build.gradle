@@ -32,5 +32,5 @@ android.packagingOptions {
 
 dependencies {
     compile 'commons-codec:commons-codec:1.5'
-    compile files('libs/lucene-snowball-3.0.3.jar')
+    compile 'org.apache.lucene:lucene-snowball:3.0.3'
 }
