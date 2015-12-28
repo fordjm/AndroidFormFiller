@@ -89,13 +89,11 @@ public class FormFillerActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //  TODO:   ForegroundView wrapper class?
-    public void onReceiveGeneratedView(View view) {
-        setContentView(view);
+    public void onReceiveGeneratedView(ForegroundView view) {
+        setContentView(view.getView());
     }
 
-    //  TODO:   BackgroundView?
-    public void onReceiveGeneratedView(final AudioView view) {
+    public void onReceiveGeneratedView(final BackgroundView view) {
         runOnUiThread(new Runnable() {
             public void run() {
                 view.view(FormFillerActivity.this);

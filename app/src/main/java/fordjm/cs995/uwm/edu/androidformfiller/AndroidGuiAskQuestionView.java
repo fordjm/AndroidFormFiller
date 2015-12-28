@@ -26,7 +26,8 @@ public class AndroidGuiAskQuestionView {
 
     public void generateView(AskQuestionViewModel askQuestionViewModel) {
         View view = createViewFromViewModel(askQuestionViewModel);
-        activity.onReceiveGeneratedView(view);
+        ForegroundView result = new ForegroundView(view);
+        activity.onReceiveGeneratedView(result);
     }
 
     private View createViewFromViewModel(AskQuestionViewModel askQuestionViewModel) {

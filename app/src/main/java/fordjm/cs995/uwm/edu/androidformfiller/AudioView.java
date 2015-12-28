@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import root.gast.speech.tts.TextToSpeechInitializer;
 
-public class AudioView {
+public class AudioView implements BackgroundView {
     private FormFillerActivity activity;
     private String message;
     private TextToSpeechStartupListenerImpl ttsStartupListener;

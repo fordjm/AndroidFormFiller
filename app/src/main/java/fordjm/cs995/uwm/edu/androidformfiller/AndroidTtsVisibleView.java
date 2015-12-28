@@ -10,7 +10,8 @@ public class AndroidTtsVisibleView {
     }
 
     public void generateView() {
-        View result = new TtsDisplayView(activity);
+        View view = new TtsDisplayView(activity);
+        ForegroundView result = new ForegroundView(view);
         activity.onReceiveGeneratedView(result);
     }
 
