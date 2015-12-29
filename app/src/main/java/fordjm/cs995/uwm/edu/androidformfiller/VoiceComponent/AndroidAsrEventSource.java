@@ -1,4 +1,4 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 import formfiller.delivery.event.eventSource.EventSource;
 import formfiller.utilities.LingPipeTfIdfProximityCalculator;
 import root.gast.speech.RecognizerIntentFactory;

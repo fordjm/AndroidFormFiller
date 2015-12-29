@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import fordjm.cs995.uwm.edu.androidformfiller.GuiComponent.GuiUtilities;
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
+
 public class SetupActivity extends AppCompatActivity {
 
     @Override

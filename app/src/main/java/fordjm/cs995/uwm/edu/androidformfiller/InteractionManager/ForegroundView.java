@@ -1,4 +1,4 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.InteractionManager;
 
 import android.view.View;
 

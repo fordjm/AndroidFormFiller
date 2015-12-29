@@ -12,6 +12,7 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 import formfiller.utilities.TestSetup;
 
 @RunWith(RobolectricGradleTestRunner.class)

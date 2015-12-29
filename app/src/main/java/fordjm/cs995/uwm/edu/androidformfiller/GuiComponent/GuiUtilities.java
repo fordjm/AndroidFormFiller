@@ -1,4 +1,4 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.GuiComponent;
 
 import android.app.Activity;
 import android.util.DisplayMetrics;

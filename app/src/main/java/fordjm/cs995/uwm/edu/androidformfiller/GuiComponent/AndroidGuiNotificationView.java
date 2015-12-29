@@ -1,7 +1,8 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.GuiComponent;
 
 import android.widget.Toast;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 import formfiller.delivery.viewModel.NotificationViewModel;
 
 public class AndroidGuiNotificationView {

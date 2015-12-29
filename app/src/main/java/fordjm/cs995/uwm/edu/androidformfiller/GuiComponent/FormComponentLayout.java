@@ -1,4 +1,4 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.GuiComponent;
 
 import android.content.Context;
 import android.view.GestureDetector;
@@ -6,6 +6,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
+import fordjm.cs995.uwm.edu.androidformfiller.R;
 
 public class FormComponentLayout extends LinearLayout {
     private FormFillerActivity activity;

@@ -1,7 +1,8 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent;
 
 import android.speech.tts.TextToSpeech;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 import formfiller.utilities.StringUtilities;
 import root.gast.speech.tts.TextToSpeechInitializer;

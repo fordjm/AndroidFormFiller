@@ -1,4 +1,4 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent;
 
 import android.annotation.SuppressLint;
 import android.speech.tts.TextToSpeech;
@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.util.HashMap;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 import root.gast.speech.tts.TextToSpeechStartupListener;
 import root.gast.speech.tts.TextToSpeechUtils;
 

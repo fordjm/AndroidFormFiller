@@ -1,5 +1,8 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.InteractionManager;
 
+import fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent.VisibleVoiceComponent.AndroidAsrVisibleEventSource;
+import fordjm.cs995.uwm.edu.androidformfiller.GuiComponent.AndroidGuiEventSource;
+import fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent.AndroidAsrEventSource;
 import formfiller.delivery.event.eventSource.*;
 
 public class AndroidEventSourceFactory implements EventSourceFactory {

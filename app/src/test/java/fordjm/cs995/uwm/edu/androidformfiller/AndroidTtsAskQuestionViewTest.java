@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import org.easymock.Mock;
 import org.junit.Test;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
+import fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent.AndroidTtsAskQuestionView;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;
 
 import static org.easymock.EasyMock.createMock;

@@ -1,9 +1,11 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent;
 
 import android.content.Context;
 
 import java.util.Locale;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.BackgroundView;
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 import root.gast.speech.tts.TextToSpeechInitializer;
 
 public class AudioView implements BackgroundView {

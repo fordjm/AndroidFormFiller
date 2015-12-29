@@ -1,4 +1,4 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.InteractionManager;
 
 import formfiller.delivery.event.EventParser;
 import formfiller.delivery.event.TfIdfSimilarityEventParsingStrategy;

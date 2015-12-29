@@ -1,13 +1,13 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.InteractionManager;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
+import fordjm.cs995.uwm.edu.androidformfiller.R;
 import formfiller.EventSinks;
 import formfiller.EventSources;
 import formfiller.delivery.event.eventSink.EventSinkFactory;

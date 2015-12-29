@@ -1,8 +1,10 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.GuiComponent;
 
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
+import fordjm.cs995.uwm.edu.androidformfiller.R;
 import formfiller.usecases.addAnswer.AddAnswerViewModel;
 
 public class AndroidGuiAddAnswerView {

@@ -1,9 +1,12 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent.VisibleVoiceComponent;
 
 import android.graphics.Color;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
+import fordjm.cs995.uwm.edu.androidformfiller.R;
 
 public class TtsDisplayView extends RelativeLayout {
     FormFillerActivity activity;

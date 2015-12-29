@@ -13,6 +13,8 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
+import fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent.AndroidAsrEventSource;
 import formfiller.delivery.event.eventSource.EventSource;
 
 @RunWith(RobolectricGradleTestRunner.class)

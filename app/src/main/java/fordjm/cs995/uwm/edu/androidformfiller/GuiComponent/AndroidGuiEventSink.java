@@ -1,5 +1,6 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.GuiComponent;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 import formfiller.delivery.event.eventSink.EventSink;
 import formfiller.delivery.viewModel.NotificationViewModel;
 import formfiller.usecases.addAnswer.AddAnswerViewModel;

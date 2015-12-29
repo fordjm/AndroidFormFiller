@@ -1,9 +1,11 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.GuiComponent;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
+import fordjm.cs995.uwm.edu.androidformfiller.R;
 import formfiller.delivery.event.eventSource.EventSource;
 
 public class AndroidGuiEventSource implements EventSource {

@@ -1,6 +1,9 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent.VisibleVoiceComponent;
 
 import android.view.View;
+
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.ForegroundView;
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 
 public class AndroidTtsVisibleView {
     private FormFillerActivity activity;

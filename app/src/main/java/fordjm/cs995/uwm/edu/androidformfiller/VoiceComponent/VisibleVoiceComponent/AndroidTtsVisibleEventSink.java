@@ -1,5 +1,7 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent.VisibleVoiceComponent;
 
+import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
+import fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent.AndroidTtsEventSink;
 import formfiller.delivery.viewModel.NotificationViewModel;
 import formfiller.usecases.addAnswer.AddAnswerViewModel;
 import formfiller.usecases.askQuestion.AskQuestionViewModel;

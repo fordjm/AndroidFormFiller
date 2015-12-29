@@ -1,9 +1,9 @@
-package fordjm.cs995.uwm.edu.androidformfiller;
+package fordjm.cs995.uwm.edu.androidformfiller.GuiComponent;
 
 import android.view.View;
 import android.view.ViewGroup;
 
-public class LayoutUtils {
+public class LayoutUtilities {
 
     //  From:       http://stackoverflow.com/questions/19800422/disabling-all-child-views-inside-the-layout
     //  By:         Haldean Brown
