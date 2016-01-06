@@ -86,6 +86,7 @@ public class AndroidGuiAskQuestionView {
         result.setGravity(Gravity.CENTER);
         result.setImeOptions(EditorInfo.IME_ACTION_SEND);
         //result.setOnFocusChangeListener(makeOnFocusListener(result));
+        result.setActivated(false); //  TODO:   Verify this works.
         result.setOnEditorActionListener(makeOnEditorActionListener(result));
         return result;
     }

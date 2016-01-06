@@ -13,7 +13,7 @@ public class AndroidGuiNotificationView {
     }
 
     public void generateView(NotificationViewModel notificationViewModel) {
-        activity.toastNotification(notificationViewModel.message);
+        toastNotification(notificationViewModel.message);
     }
 
     //  TODO:   Fix duplication in MainActivity.java

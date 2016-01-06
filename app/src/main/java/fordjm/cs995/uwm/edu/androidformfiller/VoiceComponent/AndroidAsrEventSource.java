@@ -1,5 +1,7 @@
 package fordjm.cs995.uwm.edu.androidformfiller.VoiceComponent;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
@@ -13,6 +15,7 @@ import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActiv
 import formfiller.delivery.event.eventSource.EventSource;
 import formfiller.utilities.LingPipeTfIdfProximityCalculator;
 import root.gast.speech.RecognizerIntentFactory;
+import root.gast.speech.SpeechRecognitionUtil;
 
 public class AndroidAsrEventSource implements EventSource, RecognitionListener {
     private final String commandWords = "add answer ask current next previous question";
@@ -30,6 +33,8 @@ public class AndroidAsrEventSource implements EventSource, RecognitionListener {
     }
 
     public void enable() {
+        checkSpeechAvailability();
+
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -37,6 +42,46 @@ public class AndroidAsrEventSource implements EventSource, RecognitionListener {
                 recognizeDirectly(recognizerIntent);
             }
         });
+    }
+
+    //  Method contents from GAST SpeechRecognitionActivity.java onCreate()
+    private void checkSpeechAvailability() {
+        boolean direct = SpeechRecognizer.isRecognitionAvailable(activity);
+        if (!direct)
+        {
+            directSpeechNotAvailable();
+        }
+    }
+
+    //  Method copied directly from GAST SpeechRecognizingAndSpeakingActivity.java.
+    protected void speechNotAvailable()
+    {
+        DialogInterface.OnClickListener onClickOk = makeOnFailedToInitHandler();
+        AlertDialog a =
+                new AlertDialog.Builder(activity)
+                        .setTitle("Error")
+                        .setMessage(
+                                "Please install the Google app for speech recognition. Click ok to quit.")
+                        .setPositiveButton("Ok", onClickOk).create();
+        a.show();
+    }
+
+    private DialogInterface.OnClickListener makeOnFailedToInitHandler()
+    {
+        return new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                activity.finish();
+            }
+        };
+    }
+
+    protected void directSpeechNotAvailable()
+    {
+        //  TODO:   Make direct speech available by downloading Voice Search.
+        speechNotAvailable();
     }
 
     private Intent createRecognizerIntent(){

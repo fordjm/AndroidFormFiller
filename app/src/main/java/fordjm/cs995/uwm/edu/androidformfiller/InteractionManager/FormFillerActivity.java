@@ -101,15 +101,6 @@ public class FormFillerActivity extends AppCompatActivity {
         });
     }
 
-    //  TODO:   Remove
-    public void toastNotification(final String notification){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                Toast.makeText(FormFillerActivity.this, (CharSequence) notification, Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
     public void disableUi() {
         //uiDisableCallTracker.addDisable();
         EventSources.disable();
