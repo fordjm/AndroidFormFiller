@@ -1,7 +1,7 @@
 package fordjm.cs995.uwm.edu.androidformfiller.InteractionManager;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +14,7 @@ import formfiller.delivery.event.eventSink.EventSinkFactory;
 import formfiller.delivery.router.Router;
 import formfiller.utilities.TestSetup;
 
-public class FormFillerActivity extends AppCompatActivity {
+public class FormFillerActivity extends Activity {
     private AndroidEventHandler eventHandler;
     private UiDisableCallTracker uiDisableCallTracker;
 
@@ -65,7 +65,20 @@ public class FormFillerActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        temporaryExitMethod();  //  TODO:   Remove
         return true;
+    }
+
+    private void temporaryExitMethod() {
+        finish();
+    }
+
+    private void toast(final String notification) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Toast.makeText(FormFillerActivity.this, (CharSequence) notification, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

@@ -16,7 +16,6 @@ public class AndroidGuiNotificationView {
         toastNotification(notificationViewModel.message);
     }
 
-    //  TODO:   Fix duplication in MainActivity.java
     public void toastNotification(final String notification) {
         activity.runOnUiThread(new Runnable() {
             public void run() {

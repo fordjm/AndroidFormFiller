@@ -1,16 +1,15 @@
 package fordjm.cs995.uwm.edu.androidformfiller;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import fordjm.cs995.uwm.edu.androidformfiller.GuiComponent.GuiUtilities;
 import fordjm.cs995.uwm.edu.androidformfiller.InteractionManager.FormFillerActivity;
 
-public class SetupActivity extends AppCompatActivity {
+public class SetupActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

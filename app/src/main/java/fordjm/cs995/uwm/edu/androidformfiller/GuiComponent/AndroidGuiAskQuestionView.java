@@ -66,8 +66,14 @@ public class AndroidGuiAskQuestionView {
         answerContainer.removeAllViews();
         if (isAnswerContentEmpty(answerContent.toString()))
             answerContainer.addView(createEditText());
-        else
-            answerContainer.addView((createEditText(answerContent.toString())));
+        else{
+            String viewContent = removeQuotes(answerContent.toString());
+            answerContainer.addView((createEditText(viewContent)));
+        }
+    }
+
+    private String removeQuotes(String s) {
+        return s.replaceAll("\"", "");
     }
 
     private boolean isAnswerContentEmpty(String answerContent) {
@@ -76,27 +82,18 @@ public class AndroidGuiAskQuestionView {
 
     //  TODO:   Clear hint when touched.
     private EditText createEditText(){
-        // FILL_PARENT, WRAP_PARENT, (imeOptions=) actionSend
-        final EditText result = new EditText(activity);
+        final EditText result = new EditTextWithHardSend(activity);
         result.setHint("Tap Here");
         result.setTextSize(GuiUtilities.getScaledFontSize(activity, 22.0f));
         result.setHeight(new Double(
                 activity.getResources().getDisplayMetrics().heightPixels * 0.375).intValue());
         result.setWidth(activity.getResources().getDisplayMetrics().widthPixels);
         result.setGravity(Gravity.CENTER);
+        result.setCursorVisible(false);
         result.setImeOptions(EditorInfo.IME_ACTION_SEND);
-        //result.setOnFocusChangeListener(makeOnFocusListener(result));
-        result.setActivated(false); //  TODO:   Verify this works.
+        result.setOnClickListener(makeOnClickListener(result));
         result.setOnEditorActionListener(makeOnEditorActionListener(result));
         return result;
-    }
-
-    private View.OnFocusChangeListener makeOnFocusListener(final EditText result) {
-        return new View.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                result.setHint("");
-            }
-        };
     }
 
     private EditText createEditText(String message) {
@@ -110,22 +107,26 @@ public class AndroidGuiAskQuestionView {
         return new TextView.OnEditorActionListener(){
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent event){
-                boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_SEND){
-                    String eventString = "add answer " + editText.getText().toString();
-                    activity.onReceivePushedEvent(eventString);
-                    handled = true;
-                    closeKeyboard();
+                    closeSoftKeyboard();
+                    return handleSendAction(editText);
                 }
-                return handled;
+                return false;
             }
         };
+    }
+
+    private boolean handleSendAction(EditText editText) {
+        editText.setCursorVisible(false);
+        String eventString = "add answer " + editText.getText().toString();
+        activity.onReceivePushedEvent(eventString);
+        return true;
     }
 
     // From:
     // http://stackoverflow.com/questions/2342620/how-to-hide-keyboard-after-typing-in-edittext-in-android
     // Retrieved:	05/25/2015
-    private void closeKeyboard(){
+    private void closeSoftKeyboard(){
         Context context = activity;
         InputMethodManager inputManager =
                 (InputMethodManager) context.
@@ -135,4 +136,25 @@ public class AndroidGuiAskQuestionView {
                 InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
+    private TextView.OnClickListener makeOnClickListener(final EditText editText) {
+        return new TextView.OnClickListener() {
+            public void onClick(View view) {
+                editText.setCursorVisible(true);
+                editText.setHint("");
+            }
+        };
+    }
+
+    private class EditTextWithHardSend extends EditText {
+        public EditTextWithHardSend(Context context) {
+            super(context);
+        }
+
+        public boolean onKeyUp(int keyCode, KeyEvent event) {
+            if (keyCode == KeyEvent.KEYCODE_ENTER)
+                return handleSendAction(this);
+            else
+                return super.onKeyUp(keyCode, event);
+        }
+    }
 }
